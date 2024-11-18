@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donated Blood Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
+    <script src="app.js"></script>
+    <script>
+        // Function to load the navbar
+        function loadNavbar() {
+            fetch('navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar-container').innerHTML = data;
+                });
+        }
+        loadNavbar(); // Load the navbar when the page loads
+    </script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            background-image: url("imgs/img6.jpg");
+            background-size: cover;
+        }
+
+        .navbar {
+            width: 100%;
+            background-color: #333;
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 30px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .navbar .navbar-brand {
+            color: #f0f0f0;
+            font-size: 1.5rem;
+            text-decoration: none;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .navbar ul li a {
+            color: #f0f0f0;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        .navbar ul li a:hover {
+            color: #ff8c00;
+        }
+
+        /* Content styles */
+        .content {
+            margin-top: 70px; /* Adjusted margin to avoid overlap with navbar */
+            padding: 30px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 40px;
+        }
+
+        /* Card container for stats */
+        .card-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+
+        /* Card Style */
+        .card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 250px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .card h2 {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 1.2rem;
+            color: #555;
+            margin: 0;
+        }
+
+        .card .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #4caf50;
+            margin-top: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="navbar-container"></div> <!-- Navbar will be loaded here -->
+
+    <h1><br><br><br>Donated Blood Dashboard</h1>
+
+    <button onclick="fetchBloodData()">Get Blood Data</button>
+
+    <div class="card-container">
+        <!-- Card 1: Total Blood Donated -->
+        <div class="card">
+            <h2>Total Units of Blood Donated</h2>
+            <p id="totalBloodDonated" class="stat-value">Click the button to get data</p>
+        </div>
+
+        <!-- Card 2: Blood Inventory for Type A -->
+        <div class="card">
+            <h2>Total Units of Blood donated for Type A</h2>
+            <p id="bloodInventoryA" class="stat-value">Click the button to get data</p>
+        </div>
+
+        <!-- Card 3: Blood Inventory for Type B -->
+        <div class="card">
+            <h2>Total Units of Blood donated for Type B</h2>
+            <p id="bloodInventoryB" class="stat-value">Click the button to get data</p>
+        </div>
+
+        <!-- Card 4: Blood Inventory for Type AB -->
+        <div class="card">
+            <h2>Total Units of Blood donated for Type AB</h2>
+            <p id="bloodInventoryAB" class="stat-value">Click the button to get data</p>
+        </div>
+
+        <!-- Card 5: Blood Inventory for Type O -->
+        <div class="card">
+            <h2>Total Units of Blood donated for Type O</h2>
+            <p id="bloodInventoryO" class="stat-value">Click the button to get data</p>
+        </div>
+
+<script>
+
+window.onload = () => fetchBloodData();
+
+    // async function fetchBloodData() {
+    //      try {
+    //          // Call the smart contract function to get the total amount of blood donated
+    //          const totalBloodDonated = await bloodBankContract.methods.getTotalBloodDonated().call();
+
+    //          // Call the smart contract function to get the blood inventory for a specific blood type
+    //          const bloodInventoryA = await bloodBankContract.methods.getBloodInventory(0).call(); // Assuming 0 represents BloodType A
+
+    // //         // Update the displayed values
+    //          document.getElementById('totalBloodDonated').textContent = totalBloodDonated;
+    //          document.getElementById('bloodInventoryA').textContent = bloodInventoryA;
+    //      } catch (error) {
+    //          console.error('Error fetching blood data:', error.message);
+    //      }
+    //  }
+</script>
+</body>
+</html>
